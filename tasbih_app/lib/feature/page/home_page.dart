@@ -31,12 +31,12 @@ class _HomePageState extends State<HomePage> {
   // }
 
   void saveCount() {
-    int count = controller.controller.selectedItem;
+    int count = controller.scrollController.selectedItem;
     //controller.saveZikrCount(count);
   }
 
   void restartCount() {
-    controller.controller.animateTo(0,
+    controller.scrollController.animateTo(0,
         duration: const Duration(milliseconds: 500), curve: Curves.easeOutSine);
   }
 
@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                             child: MyListWheelScrollView(
                               zikr: selectedTitleZikr,
                               zikrCount: controller.itemCount.value.obs,
-                              controller: controller.controller,
+                              controller: controller.scrollController,
                             )),
                       ),
                     ],

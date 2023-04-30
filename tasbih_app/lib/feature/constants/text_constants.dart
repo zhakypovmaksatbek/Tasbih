@@ -12,7 +12,7 @@ class TextConstants {
   static const String addZikr = "Add Zikr";
   static const String cancel = "Cancel";
   static const String ooi = "Оой...";
-  static const String sorry = "Кечиресиз, кеминде 3 тамгагадан болуусу зарыл";
+  static const String sorry = "Кечиресиз, кеминде 3 тамгадан болуусу зарыл";
   static const String fixIt = "Оңдоо";
   static const String zikrName = "Zikr Name";
   static const String addedSuccessfully = "Зикириңиз ийгиликтүү кошулду!";

@@ -29,11 +29,13 @@ class MyListWheelScrollView extends GetView {
       squeeze: 0.8,
       offAxisFraction: -0.0,
       onSelectedItemChanged: (value) {
+        getXController.itemCount.value = value;
+        getXController.incrementZikirCount(value);
         zikrCount.value = value;
         Vibration.vibrate(duration: 50);
       },
       childDelegate: ListWheelChildBuilderDelegate(
-        childCount: 20,
+        childCount: 1000,
         builder: (context, index) {
           return Container(
               width: 100,

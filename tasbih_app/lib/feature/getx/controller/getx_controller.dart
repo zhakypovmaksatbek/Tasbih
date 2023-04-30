@@ -6,17 +6,21 @@ import '../../../database/models/zikr_model.dart';
 import '../../../main.dart';
 
 class GetXController extends GetxController {
-  final FixedExtentScrollController controller = FixedExtentScrollController();
+  final FixedExtentScrollController scrollController =
+      FixedExtentScrollController();
   //BU ListweelScrollview deki eleman sayisi
-  final Rx<int> itemCount = 20.obs;
+  final Rx<int> itemCount = 0.obs;
+  int zikrCount = 0;
+
+  void incrementZikirCount(int index) {
+    zikrCount = index;
+  }
 
   late List<ZikrModel> _allZikrs;
   late LocalStorage _localStorage;
 
-  RxInt zikrCount = RxInt(1);
-
   void setZikrCount(int value) {
-    zikrCount.value = value;
+    zikrCount = value;
   }
 
   List<ZikrModel> get allZikrs => _allZikrs;
@@ -36,7 +40,7 @@ class GetXController extends GetxController {
   }
 
   void checkRestart() {
-    controller.animateTo(
+    scrollController.animateTo(
       0,
       duration: const Duration(microseconds: 1000),
       curve: Curves.bounceInOut,

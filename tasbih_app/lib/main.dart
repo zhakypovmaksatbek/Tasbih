@@ -4,7 +4,6 @@ import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:tasbih_app/feature/getx/controller/getx_controller.dart';
-import 'package:tasbih_app/feature/page/home_page.dart';
 
 import 'database/data/local_storage.dart';
 import 'database/models/zikr_model.dart';
@@ -15,10 +14,29 @@ void setup() {
   locator.registerSingleton<LocalStorage>(HiveLocalStorage());
 }
 
+final List<ZikrModel> defaultZikrs = [
+  ZikrModel(
+      id: '1',
+      zikrName: 'Alhamdulillah',
+      zikrCount: 0,
+      createdAt: DateTime.now()),
+  ZikrModel(
+      id: '2',
+      zikrName: 'Subhanallah',
+      zikrCount: 0,
+      createdAt: DateTime.now()),
+  ZikrModel(
+      id: '3',
+      zikrName: 'Allahu Akbar',
+      zikrCount: 0,
+      createdAt: DateTime.now()),
+];
+
 Future<void> setupHive() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ZikrModelAdapter());
   var zikrBox = await Hive.openBox<ZikrModel>('zikrs');
+  await zikrBox.addAll(defaultZikrs);
 }
 
 Future<void> main() async {

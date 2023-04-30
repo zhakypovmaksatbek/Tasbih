@@ -45,7 +45,7 @@ class _MyListViewState extends State<MyListView> {
   void _onTap(int index) {
     setSelectedItem(_allZikrs[index].zikrName);
     setState(() {});
-    getXController.controller.animateTo(0,
+    getXController.scrollController.animateTo(0,
         duration: const Duration(seconds: 1), curve: Curves.bounceOut);
   }
 

@@ -61,6 +61,7 @@ class _HistoryPageState extends State<HistoryPage> {
           icon: Icons.arrow_back_ios_new_outlined,
           onTap: () {
             Navigator.pop(context);
+            setState(() {});
           },
         ),
         centerTitle: true,
@@ -167,8 +168,9 @@ class _HistoryPageState extends State<HistoryPage> {
                     createdAt: DateTime.now(),
                     zikrCount: 0,
                   );
-
+                  _allZikrs.insert(0, newZikr);
                   Navigator.pop(context);
+                  setState(() {});
 
                   QuickAlert.show(
                       title: TextConstants.success,

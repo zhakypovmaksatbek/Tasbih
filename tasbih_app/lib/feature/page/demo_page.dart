@@ -24,19 +24,11 @@ class _HomePageState extends State<DemoPage> {
 
   final selectedTitleZikr = SelectedTitleZikr();
 
-  void saveCount(int index) {
-    // int count = controller.controller.selectedItem;
-    // //controller.saveZikrCount(count);
-  }
-
   void restartCount() {
-    controller.controller.animateTo(0,
+   
+    controller.scrollController.animateTo(0,
         duration: const Duration(milliseconds: 500), curve: Curves.easeOutSine);
-  }
-
-  int zikrCount = 0;
-  void incrementZikir(int index) {
-    zikrCount = index;
+   
   }
 
   late List<ZikrModel> _allZikrs = [];
@@ -55,8 +47,6 @@ class _HomePageState extends State<DemoPage> {
     _allZikrs = await _localStorage.getAllZikr();
     setState(() {});
   }
-
-  Future<void> _incremenZikrCount() async {}
 
   @override
   Widget build(
@@ -109,7 +99,7 @@ class _HomePageState extends State<DemoPage> {
                             child: MyListWheelScrollView(
                               zikr: selectedTitleZikr,
                               zikrCount: controller.itemCount.value.obs,
-                              controller: controller.controller,
+                              controller: controller.scrollController,
                             )),
                       ),
                     ],
