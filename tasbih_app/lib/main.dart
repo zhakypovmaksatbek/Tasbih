@@ -4,10 +4,10 @@ import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:tasbih_app/feature/getx/controller/getx_controller.dart';
+import 'package:tasbih_app/feature/page/screen_page.dart';
 
 import 'database/data/local_storage.dart';
 import 'database/models/zikr_model.dart';
-import 'feature/page/demo_page.dart';
 
 final locator = GetIt.instance;
 void setup() {
@@ -36,7 +36,9 @@ Future<void> setupHive() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ZikrModelAdapter());
   var zikrBox = await Hive.openBox<ZikrModel>('zikrs');
-  await zikrBox.addAll(defaultZikrs);
+  if (zikrBox.isEmpty) {
+    zikrBox.addAll(defaultZikrs);
+  }
 }
 
 Future<void> main() async {
@@ -55,7 +57,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       theme: ThemeData.dark(useMaterial3: true),
-      home: const DemoPage(),
+      home: const ScreenPage(),
       initialBinding: BindingsBuilder(() {
         Get.lazyPut(() => GetXController());
       }),

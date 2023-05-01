@@ -29,6 +29,7 @@ class _MyListViewState extends State<MyListView> {
     super.initState();
     _localStorage = locator<LocalStorage>();
     _allZikrs = <ZikrModel>[];
+    setState(() {});
     _getAllZikrFromDb();
   }
 

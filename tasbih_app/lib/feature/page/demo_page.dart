@@ -25,10 +25,9 @@ class _HomePageState extends State<DemoPage> {
   final selectedTitleZikr = SelectedTitleZikr();
 
   void restartCount() {
-   
     controller.scrollController.animateTo(0,
         duration: const Duration(milliseconds: 500), curve: Curves.easeOutSine);
-   
+ 
   }
 
   late List<ZikrModel> _allZikrs = [];
