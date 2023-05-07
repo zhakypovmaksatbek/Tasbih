@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../database/data/local_storage.dart';
@@ -27,7 +28,6 @@ class _HomePageState extends State<DemoPage> {
   void restartCount() {
     controller.scrollController.animateTo(0,
         duration: const Duration(milliseconds: 500), curve: Curves.easeOutSine);
- 
   }
 
   late List<ZikrModel> _allZikrs = [];
@@ -37,6 +37,7 @@ class _HomePageState extends State<DemoPage> {
   @override
   void initState() {
     super.initState();
+    //SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 
     _localStorage = HiveLocalStorage();
     _getAllZikrFromDb();
@@ -53,9 +54,13 @@ class _HomePageState extends State<DemoPage> {
   ) {
     return Obx(() => Scaffold(
           backgroundColor: ColorConstants.backgroundColor,
+          // appBar: AppBar(
+          //   backgroundColor: Colors.transparent,
+          //   elevation: 0,
+          // ),
           body: SafeArea(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               height: 800,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
